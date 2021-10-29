@@ -1,0 +1,14 @@
+/*
+ * driver.c
+ *
+ *  Created on: Oct 28, 2021
+ *      Author: khoj0332
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+	printf("YAY!");
+	return EXIT_SUCCESS;
+}

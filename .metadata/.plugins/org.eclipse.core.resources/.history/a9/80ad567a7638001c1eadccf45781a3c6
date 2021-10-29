@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX 50
+
+typedef struct BSTNode *BSTNodePtr;
+typedef struct BSTNode {
+	int key;
+	char szData[MAX];
+	BSTNodePtr psLeftChild, psRightChild;
+} BSTNode;
+
+void bstInsert(BSTNode **hsRoot, int key, char *szData, int size) {
+	BSTNode *psTmp = *hsRoot, *psParent = *hsRoot;
+	if ( NULL == *hsRoot) {
+		*hsRoot = (BSTNodePtr) malloc(sizeof(BSTNode));
+		(*hsRoot)->psLeftChild = (*hsRoot)->psRightChild = NULL;
+		strncpy((*hsRoot)->szData, szData, size);
+	} else {
+		while ( NULL != psTmp) {
+			psParent = psTmp;
+			if (key < psParent->key)
+				psTmp = psParent->psLeftChild;
+			else if (key > psParent->key)
+				psTmp = psParent->psRightChild;
+			else
+				return;
+		}
+		if (key < psParent->key) {
+			psParent->psLeftChild = malloc(sizeof(BSTNode));
+			psParent->psLeftChild->psLeftChild = NULL;
+			psParent->psLeftChild->psRightChild = NULL;
+		} else if (key > psParent->key) {
+			psParent->psRightChild = malloc(sizeof(BSTNode));
+			psParent->psRightChild->psLeftChild = NULL;
+			psParent->psRightChild->psRightChild = NULL;
+		}
+	}
+}
+
+int main() {
+
+	BSTNodePtr psTree;
+	bstInsert(&psTree, 15, "Shereen", 8);
+	bstInsert(&psTree, 8, "Layla", 6);
+	bstInsert(&psTree, 20, "Nora", 5);
+
+	printf("YAY!");
+	return EXIT_SUCCESS;
+}

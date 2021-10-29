@@ -1,0 +1,41 @@
+22:28:37 **** Incremental Build of configuration Default for project BST ****
+make all 
+gcc -Wall -g -c src/driver.c -o bin/driver.o
+src/driver.c: In function ‘bstSearch’:
+src/driver.c:75:10: error: expected ‘;’ before ‘bFound’
+          bFound = true; }
+          ^~~~~~
+make: *** [Makefile:15: bin/driver.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+22:28:49 **** Incremental Build of configuration Default for project BST ****
+make all 
+gcc -Wall -g -c src/driver.c -o bin/driver.o
+gcc   bin/driver.o   -o bin/driver
+22:29:08 **** Incremental Build of configuration Default for project BST ****
+make all 
+gcc -Wall -g -c src/driver.c -o bin/driver.o
+gcc   bin/driver.o   -o bin/driver
+22:29:09 **** Incremental Build of configuration Default for project BST ****
+make all 
+make: Nothing to be done for 'all'.
+22:30:04 **** Incremental Build of configuration Default for project BST ****
+make all 
+gcc -Wall -g -c src/driver.c -o bin/driver.o
+gcc   bin/driver.o   -o bin/driver
+22:30:05 **** Incremental Build of configuration Default for project BST ****
+make all 
+make: Nothing to be done for 'all'.
+22:30:47 **** Incremental Build of configuration Default for project BST ****
+make all 
+gcc -Wall -g -c src/driver.c -o bin/driver.o
+gcc   bin/driver.o   -o bin/driver
+22:30:51 **** Incremental Build of configuration Default for project BST ****
+make all 
+make: Nothing to be done for 'all'.
+22:33:51 **** Incremental Build of configuration Default for project BST ****
+make all 
+gcc -Wall -g -c src/driver.c -o bin/driver.o
+gcc   bin/driver.o   -o bin/driver
+22:33:53 **** Incremental Build of configuration Default for project BST ****
+make all 
+make: Nothing to be done for 'all'.
