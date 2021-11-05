@@ -1,154 +1,102 @@
-21:48:53 **** Incremental Build of configuration Default for project BST ****
-make all 
-make: Nothing to be done for 'all'.
-21:49:04 **** Incremental Build of configuration Default for project BST ****
+14:59:55 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-src/driver.c: In function ‘main’:
-src/driver.c:97:7: warning: variable ‘bKey’ set but not used [-Wunused-but-set-variable]
-  bool bKey;
-       ^~~~
-gcc   bin/driver.o   -o bin/driver
-21:49:46 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+15:00:05 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-21:50:54 **** Incremental Build of configuration Default for project BST ****
-make all 
-make: Nothing to be done for 'all'.
-21:52:03 **** Incremental Build of configuration Default for project BST ****
+17:20:50 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-src/driver.c: In function ‘main’:
-src/driver.c:97:7: warning: variable ‘bKey’ set but not used [-Wunused-but-set-variable]
-  bool bKey;
-       ^~~~
-gcc   bin/driver.o   -o bin/driver
-21:52:05 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:20:55 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-21:52:54 **** Incremental Build of configuration Default for project BST ****
-make all 
-make: Nothing to be done for 'all'.
-21:53:12 **** Incremental Build of configuration Default for project BST ****
+17:22:24 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-src/driver.c: In function ‘main’:
-src/driver.c:97:7: warning: variable ‘bKey’ set but not used [-Wunused-but-set-variable]
-  bool bKey;
-       ^~~~
-gcc   bin/driver.o   -o bin/driver
-21:53:37 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:22:28 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-21:54:01 **** Incremental Build of configuration Default for project BST ****
+17:24:11 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-src/driver.c: In function ‘main’:
-src/driver.c:97:7: warning: variable ‘bKey’ set but not used [-Wunused-but-set-variable]
-  bool bKey;
-       ^~~~
-gcc   bin/driver.o   -o bin/driver
-21:54:09 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:24:14 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-21:54:22 **** Incremental Build of configuration Default for project BST ****
+17:27:51 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-src/driver.c: In function ‘main’:
-src/driver.c:97:7: warning: variable ‘bKey’ set but not used [-Wunused-but-set-variable]
-  bool bKey;
-       ^~~~
-gcc   bin/driver.o   -o bin/driver
-21:54:26 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:27:54 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-21:55:02 **** Incremental Build of configuration Default for project BST ****
+17:31:27 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-src/driver.c: In function ‘main’:
-src/driver.c:113:26: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
-   printf("\n\nNot Found %d, key");
-                         ~^
-src/driver.c:97:7: warning: variable ‘bKey’ set but not used [-Wunused-but-set-variable]
-  bool bKey;
-       ^~~~
-gcc   bin/driver.o   -o bin/driver
-21:55:04 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:31:30 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-21:55:22 **** Incremental Build of configuration Default for project BST ****
+17:31:52 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-src/driver.c: In function ‘main’:
-src/driver.c:112:26: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
-   printf("\n\nNot Found %d, key");
-                         ~^
-src/driver.c:97:7: warning: unused variable ‘bKey’ [-Wunused-variable]
-  bool bKey;
-       ^~~~
-gcc   bin/driver.o   -o bin/driver
-21:55:30 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:31:54 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-21:56:07 **** Incremental Build of configuration Default for project BST ****
+17:33:04 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-gcc   bin/driver.o   -o bin/driver
-21:56:09 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:33:07 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-22:30:50 **** Incremental Build of configuration Default for project BST ****
+17:33:19 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-gcc   bin/driver.o   -o bin/driver
-22:30:53 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:33:22 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-22:32:45 **** Incremental Build of configuration Default for project BST ****
+17:37:05 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-gcc   bin/driver.o   -o bin/driver
-22:32:48 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:37:09 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-22:33:01 **** Incremental Build of configuration Default for project BST ****
+17:53:17 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-gcc   bin/driver.o   -o bin/driver
-22:33:03 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:53:22 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-22:34:04 **** Incremental Build of configuration Default for project BST ****
+17:53:41 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-gcc   bin/driver.o   -o bin/driver
-22:34:06 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:53:43 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-22:34:28 **** Incremental Build of configuration Default for project BST ****
+17:54:24 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-gcc   bin/driver.o   -o bin/driver
-22:34:29 **** Incremental Build of configuration Default for project BST ****
-make all 
-make: Nothing to be done for 'all'.
-22:35:05 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:54:32 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-gcc   bin/driver.o   -o bin/driver
-22:35:07 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+17:54:34 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-22:40:55 **** Incremental Build of configuration Default for project BST ****
-make all 
-make: Nothing to be done for 'all'.
-22:40:58 **** Incremental Build of configuration Default for project BST ****
-make all 
-make: Nothing to be done for 'all'.
-22:52:33 **** Incremental Build of configuration Default for project BST ****
+18:02:45 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
-gcc   bin/driver.o   -o bin/driver
-22:52:35 **** Incremental Build of configuration Default for project BST ****
+gcc -Wall -g bin/driver.o -o bin/driver
+18:02:49 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.

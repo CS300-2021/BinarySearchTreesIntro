@@ -1,6 +1,6 @@
-22:52:35 **** Incremental Build of configuration Default for project BST ****
+14:16:25 **** Build of configuration Default for project BST ****
 make all 
 make: Nothing to be done for 'all'.
 
-22:52:36 Build Finished. 0 errors, 0 warnings. (took 503ms)
+14:16:26 Build Finished. 0 errors, 0 warnings. (took 1s.257ms)
 
