@@ -1,9 +1,12 @@
-/*
- * bst.c
- *
- *  Created on: Nov 9, 2021
- *      Author: khoj0332
- */
+/**************************************************************************
+ File name:		  bst.c
+ Author:        Shereen Khoja, Pacific University
+ Date:          11.2.2021
+ Class:         CS300
+ Assignment:    Binary Search Trees
+ Purpose:       This file defines the data structures and function prototypes
+ for a Binary Search Tree
+ *************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,24 +20,23 @@
  Description:   Inserts a node into a Binary Search Tree
 
  Parameters:	psRoot - pointer to the root of the BST
- 	 	 	 	 	 	 	key    - the key to be placed in the node
- 	 	 	 	 	 	 	 	 	 	 	 used to organize the BST
- 	 	 	 	 	 	  szData - the data to be placed in the node
- 	 	 	 	 	 	 	 	 	 	 	 can be copied into the node using strncpy()
- 	 	 	 	 	 	  size   - number of characters in szData
+ key    - the key to be placed in the node
+ used to organize the BST
+ szData - the data to be placed in the node
+ can be copied into the node using strncpy()
+ size   - number of characters in szData
 
  Returned:	 	Pointer to the node
  *************************************************************************/
-BSTNodePtr bstInsert (BSTNodePtr psRoot, int key, char *szData, int size)
-{
+BSTNodePtr bstInsert (BSTNodePtr psRoot, int key, char *szData, int size) {
 	if (NULL == psRoot) {
 		return bstCreateNode (key, szData, size);
 	}
 	if (key < psRoot->key) {
-		psRoot->psLeftChild = bstInsert(psRoot->psLeftChild, key, szData, size);
+		psRoot->psLeftChild = bstInsert (psRoot->psLeftChild, key, szData, size);
 	}
 	else {
-		psRoot->psRightChild = bstInsert(psRoot->psRightChild, key, szData, size);
+		psRoot->psRightChild = bstInsert (psRoot->psRightChild, key, szData, size);
 	}
 	return psRoot;
 }
@@ -43,12 +45,12 @@ BSTNodePtr bstInsert (BSTNodePtr psRoot, int key, char *szData, int size)
  Function: 	 	bstCreateNode
 
  Description: Creates a node with the passed in values and sets left
- 	 	 	 	 	 	 	and right children to NULL
+ and right children to NULL
 
  Parameters:	key    - the key to be placed in the node
- 	 	 	 	 	 	  szData - the data to be placed in the node
- 	 	 	 	 	 	 	 	 	 	 	 can be copied into the node using strncpy()
- 	 	 	 	 	 	  size   - number of characters in szData
+ szData - the data to be placed in the node
+ can be copied into the node using strncpy()
+ size   - number of characters in szData
 
  Returned:	 	Pointer to the created node
  *************************************************************************/
@@ -69,10 +71,8 @@ BSTNodePtr bstCreateNode (int key, char *szData, int size) {
 
  Returned:	 	None
  *************************************************************************/
-void bstPrintInorder (BSTNodePtr psNode)
-{
-	if (psNode == NULL)
-	{
+void bstPrintInorder (BSTNodePtr psNode) {
+	if (psNode == NULL) {
 		return;
 	}
 	bstPrintInorder (psNode->psLeftChild);
@@ -93,28 +93,35 @@ void bstPrintInorder (BSTNodePtr psNode)
 
  Returned:	 	Result of if the node is found in the BST
  *************************************************************************/
-void bstSearchRecursive (BSTNodePtr psRoot, int key, BSTNodePtr psParent) {
+char* bstSearchRecursive (BSTNodePtr psRoot, int key, BSTNodePtr psParent,
+		char *sztemp, int size) {
 	if (NULL == psRoot) {
-		printf ("\n\nKey %d not found.", key);
-		return;
+		printf ("\n\nKey %d not found.\n", key);
+		sztemp = NULL;
 	}
 	if (psRoot->key == key) {
+		sztemp = (char*) malloc (sizeof(char) * size);
+		memcpy (sztemp, psRoot->szData, size);
 		if (NULL == psParent) {
-			printf("\n\nKey %d is in the root node.", key);
+			printf ("\n\nKey %d is in the root node.\n", key);
 		}
-		else if (key < psRoot->key) {
-			printf("\n\nKey %d is the left node of the node with key %d", key, psParent->key);
+		else if (key < psParent->key) {
+			printf ("\n\nKey %d is the left node of the node with key %d\n", key,
+					psParent->key);
 		}
 		else {
-			printf("\n\nKey %d is the right node of the node with key %d", key, psParent->key);
+			printf ("\n\nKey %d is the right node of the node with key %d\n", key,
+					psParent->key);
 		}
-		return;
 	}
-	if (key < psRoot->key) {
-		bstSearchRecursive(psRoot->psLeftChild, key, psRoot);
-	} else {
-		bstSearchRecursive(psRoot->psRightChild, key, psRoot);
+	else if (key < psRoot->key) {
+		sztemp = bstSearchRecursive (psRoot->psLeftChild, key, psRoot, sztemp, MAX);
 	}
+	else {
+		sztemp = bstSearchRecursive (psRoot->psRightChild, key, psRoot, sztemp,
+		MAX);
+	}
+	return sztemp;
 }
 
 /**************************************************************************
@@ -124,31 +131,47 @@ void bstSearchRecursive (BSTNodePtr psRoot, int key, BSTNodePtr psParent) {
 
  Parameters:	psRoot - pointer to the root of the BST
  key    - the key to be searched for in the BST
- pLevel - the level of the node
 
  Returned:	 	Result of if the node is found in the BST
  *************************************************************************/
-bool bstFindLevel (BSTNodePtr psRoot, int key, int *pLevel)
-{
-	bool bFound = false;
-	int level = 0;
-	BSTNodePtr psTmp = psRoot;
-	while ( NULL != psTmp && psTmp->key != key)
-	{
-		if (key < psTmp->key)
-		{
-			psTmp = psTmp->psLeftChild;
-		}
-		else
-		{
-			psTmp = psTmp->psRightChild;
-		}
-		level++;
+int bstFindLevel (BSTNodePtr psRoot, int key) {
+	if (psRoot == NULL) { // Did not find key
+		return -1;
 	}
-	if ( NULL != psTmp)
-	{
-		bFound = true;
-		*pLevel = level;
+	if (psRoot->key == key) { // found key
+		return 0;
 	}
-	return bFound;
+	else if (key < psRoot->key) {
+		if (bstFindLevel (psRoot->psLeftChild, key) == -1) {
+			return -1;
+		}
+		else {
+			return 1 + bstFindLevel (psRoot->psLeftChild, key);
+		}
+	}
+	else {
+		if (bstFindLevel (psRoot->psLeftChild, key) == -1) {
+			return -1;
+		}
+		else {
+			return 1 + bstFindLevel (psRoot->psRightChild, key);
+		}
+	}
+}
+
+BSTNodePtr bstGetParent (BSTNodePtr psRoot, int key) {
+	return bstGetParentRecursive (psRoot, key);
+}
+BSTNodePtr bstGetParentRecursive (BSTNodePtr psSubtree, int key) {
+	if (NULL == psSubtree) {
+		return NULL;
+	}
+	if (psSubtree->psLeftChild->key == key ||
+			psSubtree->psRightChild->key == key) {
+		return psSubtree;
+	}
+	if (key < psSubtree->key) {
+		return bstGetParentRecursive (psSubtree->psLeftChild, key);
+	}
+	return bstGetParentRecursive (psSubtree->psRightChild, key);
 }

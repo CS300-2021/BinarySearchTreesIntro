@@ -1,11 +1,10 @@
 /**************************************************************************
- File name:		BSTdriver.c
- Author:        CS, Pacific University
+ File name:		  BSTdriver.c
+ Author:        Shereen Khoja, Pacific University
  Date:          11.4.2021
  Class:         CS300
  Assignment:    Binary Search Trees
- Purpose:       This file defines the data structure for a Binary Search
- Tree
+ Purpose:       This file uses the Binary Search Tree data structure
  *************************************************************************/
 
 #include <stdio.h>
@@ -27,31 +26,50 @@ void bstInsertRecursive (BSTNode **hsRoot, int key, char *szData, int size) {
 
  Returned:	 	none
  *************************************************************************/
-int main ()
-{
-	BSTNodePtr psTree = NULL;
+int main () {
+	BSTNodePtr psTree = NULL, psNode = NULL;
 	int key, level;
+	char *sztemp = NULL;
 
+	// print out the empty tree
 	bstPrintInorder (psTree);
 
-	psTree = bstInsert (psTree, 30, "Neville", MAX);
+	// insert some elements into the tree
+	bstInsertRecursive (&psTree, 30, "Neville", MAX);
 	bstInsertRecursive (&psTree, 100, "Harry", MAX);
 	bstInsertRecursive (&psTree, 1, "Ron", MAX);
 	bstInsertRecursive (&psTree, 50, "Hermione", MAX);
 
+	// print out the tree after inserting some elements
 	bstPrintInorder (psTree);
 
-	bstSearchRecursive (psTree, 50, NULL);
-
-	key = 15;
-
-	if (bstFindLevel (psTree, key, &level))
-	{
-		printf ("\n\nFound %d at level %d", key, level);
+	// search for key 50 in the tree and return the string at that location
+	key = 50;
+	sztemp = bstSearchRecursive (psTree, key, NULL, sztemp, MAX);
+	if (NULL != sztemp) {
+		printf ("The string at key %d is %s\n", key, sztemp);
+		free (sztemp);
 	}
-	else
-	{
-		printf ("\n\nDid not find %d", key);
+
+	// testing bstFindLevel
+	key = 1;
+	level = bstFindLevel (psTree, key);
+	if (-1 != level) { // -1 means that key was not found
+		printf ("\n\nFound %d at level %d\n", key, level);
+	}
+	else {
+		printf ("\n\nDid not find %d\n", key);
+	}
+
+	// testing bstGetParent
+	key = 40;
+	psNode = bstGetParent (psTree, key);
+	if (NULL == psNode) {
+		printf ("Key %d does not have a parent", key);
+	}
+	else {
+		printf ("The parent of the node with key %d is is the node with key %d\n",
+			    key, psNode->key);
 	}
 
 	printf ("\n\nReached the end!");
