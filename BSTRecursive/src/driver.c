@@ -29,7 +29,7 @@ void bstInsertRecursive (BSTNode **hsRoot, int key, char *szData, int size) {
 int main () {
 	BSTNodePtr psTree = NULL, psNode = NULL;
 	int key, level;
-	char *sztemp = NULL;
+	//char *sztemp = NULL;
 
 	// print out the empty tree
 	bstPrintInorder (psTree);
@@ -39,17 +39,19 @@ int main () {
 	bstInsertRecursive (&psTree, 100, "Harry", MAX);
 	bstInsertRecursive (&psTree, 1, "Ron", MAX);
 	bstInsertRecursive (&psTree, 50, "Hermione", MAX);
+	bstInsertRecursive (&psTree, 150, "Fred", MAX);
+	bstInsertRecursive (&psTree, 120, "George", MAX);
 
 	// print out the tree after inserting some elements
 	bstPrintInorder (psTree);
 
 	// search for key 50 in the tree and return the string at that location
 	key = 50;
-	sztemp = bstSearchRecursive (psTree, key, NULL, sztemp, MAX);
-	if (NULL != sztemp) {
-		printf ("The string at key %d is %s\n", key, sztemp);
-		free (sztemp);
+	psNode = bstSearchRecursive (psTree, key, NULL);
+	if (NULL != psNode) {
+		printf ("The string at key %d is %s\n", key, psNode->szData);
 	}
+	bstPrintInorder (psTree);
 
 	// testing bstFindLevel
 	key = 1;
@@ -60,17 +62,51 @@ int main () {
 	else {
 		printf ("\n\nDid not find %d\n", key);
 	}
+	bstPrintInorder (psTree);
 
 	// testing bstGetParent
-	key = 40;
+	key = 100;
 	psNode = bstGetParent (psTree, key);
 	if (NULL == psNode) {
 		printf ("Key %d does not have a parent", key);
 	}
 	else {
 		printf ("The parent of the node with key %d is is the node with key %d\n",
-			    key, psNode->key);
+				key, psNode->key);
 	}
+	bstPrintInorder (psTree);
+
+	// testing remove
+	key = 30;
+	printf ("Removing node %d\n", key);
+	psTree = bstRemove (psTree, key);
+	bstPrintInorder (psTree);
+
+	// testing remove
+	key = 100;
+	printf ("Removing node %d\n", key);
+	psTree = bstRemove (psTree, key);
+	bstPrintInorder (psTree);
+	// testing remove
+	key = 1;
+	printf ("Removing node %d\n", key);
+	psTree = bstRemove (psTree, key);
+	bstPrintInorder (psTree);
+	// testing remove
+	key = 120;
+	printf ("Removing node %d\n", key);
+	psTree = bstRemove (psTree, key);
+	bstPrintInorder (psTree);
+	// testing remove
+	key = 50;
+	printf ("Removing node %d\n", key);
+	psTree = bstRemove (psTree, key);
+	bstPrintInorder (psTree);
+	// testing remove
+	key = 150;
+	printf ("Removing node %d\n", key);
+	psTree = bstRemove (psTree, key);
+	bstPrintInorder (psTree);
 
 	printf ("\n\nReached the end!");
 

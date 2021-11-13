@@ -91,37 +91,22 @@ void bstPrintInorder (BSTNodePtr psNode) {
  can be copied using strncpy()
  size   - number of characters in szData
 
- Returned:	 	Result of if the node is found in the BST
+ Returned:	 	Pointer to the node containing the key, if not found, NULL
+ is returned
  *************************************************************************/
-char* bstSearchRecursive (BSTNodePtr psRoot, int key, BSTNodePtr psParent,
-		char *sztemp, int size) {
+BSTNodePtr bstSearchRecursive (BSTNodePtr psRoot, int key, BSTNodePtr psParent) {
 	if (NULL == psRoot) {
-		printf ("\n\nKey %d not found.\n", key);
-		sztemp = NULL;
+		return NULL;
 	}
 	if (psRoot->key == key) {
-		sztemp = (char*) malloc (sizeof(char) * size);
-		memcpy (sztemp, psRoot->szData, size);
-		if (NULL == psParent) {
-			printf ("\n\nKey %d is in the root node.\n", key);
-		}
-		else if (key < psParent->key) {
-			printf ("\n\nKey %d is the left node of the node with key %d\n", key,
-					psParent->key);
-		}
-		else {
-			printf ("\n\nKey %d is the right node of the node with key %d\n", key,
-					psParent->key);
-		}
+		return psRoot;
 	}
 	else if (key < psRoot->key) {
-		sztemp = bstSearchRecursive (psRoot->psLeftChild, key, psRoot, sztemp, MAX);
+		return bstSearchRecursive (psRoot->psLeftChild, key, psRoot);
 	}
 	else {
-		sztemp = bstSearchRecursive (psRoot->psRightChild, key, psRoot, sztemp,
-		MAX);
+		return bstSearchRecursive (psRoot->psRightChild, key, psRoot);
 	}
-	return sztemp;
 }
 
 /**************************************************************************
@@ -163,15 +148,91 @@ BSTNodePtr bstGetParent (BSTNodePtr psRoot, int key) {
 	return bstGetParentRecursive (psRoot, key);
 }
 BSTNodePtr bstGetParentRecursive (BSTNodePtr psSubtree, int key) {
-	if (NULL == psSubtree) {
+	if (NULL == psSubtree || key == psSubtree->key) {
 		return NULL;
 	}
-	if (psSubtree->psLeftChild->key == key ||
-			psSubtree->psRightChild->key == key) {
+	if (psSubtree->psLeftChild != NULL && psSubtree->psLeftChild->key == key) {
+		return psSubtree;
+	}
+	if (psSubtree->psRightChild != NULL && psSubtree->psRightChild->key == key) {
 		return psSubtree;
 	}
 	if (key < psSubtree->key) {
 		return bstGetParentRecursive (psSubtree->psLeftChild, key);
 	}
 	return bstGetParentRecursive (psSubtree->psRightChild, key);
+}
+
+BSTNodePtr bstRemove (BSTNodePtr psRoot, int key) {
+	BSTNodePtr psNode = bstSearchRecursive (psRoot, key, NULL);
+	BSTNodePtr psParent = bstGetParent (psRoot, key);
+	return bstRemoveNode (psRoot, psParent, psNode);
+}
+
+BSTNodePtr bstRemoveNode (BSTNodePtr psRoot, BSTNodePtr psParent,
+		BSTNodePtr psNode) {
+	if (NULL == psNode) {
+		return NULL;
+	}
+
+	// Case 1: Internal node with 2 children
+	if (NULL != psNode->psLeftChild && NULL != psNode->psRightChild) {
+		// Find successor and successor's parent
+		BSTNodePtr psSuccNode = psNode->psRightChild;
+		BSTNodePtr psSuccParent = psNode;
+		while (NULL != psSuccNode->psLeftChild) {
+			psSuccParent = psSuccNode;
+			psSuccNode = psSuccNode->psLeftChild;
+		}
+
+		// copy the value from the successor node
+		//BSTNodePtr psTemp = (BSTNodePtr) malloc (sizeof(BSTNode));
+		BSTNodePtr psTempLeft = psNode->psLeftChild;
+		BSTNodePtr psTempRight = psNode->psRightChild;
+		memcpy (psNode, psSuccNode, sizeof(BSTNode));
+		psNode->psLeftChild = psTempLeft;
+		psNode->psRightChild = psTempRight;
+
+		// Recursively remove successor
+		psRoot = bstRemoveNode (psRoot, psSuccParent, psSuccNode);
+		return psRoot;
+	}
+
+	// Case 2: Root node (with 1 or 0 children)
+	else if (psNode == psRoot) {
+		if (NULL != psNode->psLeftChild) {
+			psRoot = psNode->psLeftChild;
+		}
+		else {
+			psRoot = psNode->psRightChild;
+		}
+		free (psNode);
+		return psRoot;
+	}
+
+	// Case 3: Internal with left child only
+	else if (NULL != psNode->psLeftChild) {
+		// Replace node with node's left child
+		if (psParent->psLeftChild->key == psNode->key) {
+			psParent->psLeftChild = psNode->psLeftChild;
+		}
+		else {
+			psParent->psRightChild = psNode->psLeftChild;
+		}
+		free (psNode);
+		return psRoot;
+	}
+
+	// Case 4: Internal with right child only or leaf
+	else {
+		// Replace node with node's right child
+		if (psParent->psLeftChild->key == psNode->key) {
+			psParent->psLeftChild = psNode->psRightChild;
+		}
+		else {
+			psParent->psRightChild = psNode->psRightChild;
+		}
+		free (psNode);
+		return psRoot;
+	}
 }

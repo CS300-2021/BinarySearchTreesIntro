@@ -25,11 +25,13 @@ extern BSTNodePtr bstInsert (BSTNodePtr psRoot, int key, char *szData,
 															int size);
 extern BSTNodePtr bstCreateNode (int key, char *szData, int size);
 extern void bstPrintInorder (BSTNodePtr psNode);
-extern char *bstSearchRecursive (BSTNodePtr psRoot, int key,
-																	BSTNodePtr psParent, char *sztemp, int size);
+extern BSTNodePtr bstSearchRecursive (BSTNodePtr psRoot, int key,
+																	BSTNodePtr psParent);
 extern int bstFindLevel (BSTNodePtr psRoot, int key);
 extern BSTNodePtr bstGetParent (BSTNodePtr psRoot, int key);
 extern BSTNodePtr bstGetParentRecursive (BSTNodePtr psSubtree,
 																					int key);
+extern BSTNodePtr bstRemove (BSTNodePtr psRoot, int key);
+extern BSTNodePtr bstRemoveNode (BSTNodePtr psRoot, BSTNodePtr psParent, BSTNodePtr psNode);
 
 #endif /* INCLUDE_BST_H_ */

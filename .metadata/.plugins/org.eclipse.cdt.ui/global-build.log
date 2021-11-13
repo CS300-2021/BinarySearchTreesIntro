@@ -1,13 +1,26 @@
-15:47:54 **** Incremental Build of configuration Default for project BSTRecursive ****
+11:59:50 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
-15:48:00 **** Incremental Build of configuration Default for project BSTRecursive ****
+11:59:55 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
-make: Nothing to be done for 'all'.
-15:50:19 **** Incremental Build of configuration Default for project BSTRecursive ****
+gcc -Wall -g -c src/driver.c -o bin/driver.o
+gcc -Wall -g -c src/bst.c -o bin/bst.o
+gcc -Wall -g bin/driver.o bin/bst.o -o bin/driver
+12:02:43 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 gcc -Wall -g -c src/driver.c -o bin/driver.o
 gcc -Wall -g bin/driver.o bin/bst.o -o bin/driver
-15:50:25 **** Incremental Build of configuration Default for project BSTRecursive ****
+12:02:47 **** Incremental Build of configuration Default for project BSTRecursive ****
 make all 
 make: Nothing to be done for 'all'.
+12:03:00 **** Incremental Build of configuration Default for project BSTRecursive ****
+make all 
+make: Nothing to be done for 'all'.
+12:04:28 **** Incremental Build of configuration Default for project BSTRecursive ****
+make all 
+make: Nothing to be done for 'all'.
+12:05:45 **** Incremental Build of configuration Default for project BSTRecursive ****
+make all 
+gcc -Wall -g -c src/driver.c -o bin/driver.o
+gcc -Wall -g -c src/bst.c -o bin/bst.o
+gcc -Wall -g bin/driver.o bin/bst.o -o bin/driver
