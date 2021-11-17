@@ -236,37 +236,3 @@ BSTNodePtr bstRemoveNode (BSTNodePtr psRoot, BSTNodePtr psParent,
 		return psRoot;
 	}
 }
-
-int bstFindMin (BSTNodePtr psNode) {
-	if (NULL == psNode) {
-		return -1;
-	}
-	// node does not have a left child
-	if (NULL == psNode->psLeftChild) {
-		return psNode->key;
-	}
-	return bstFindMin (psNode->psLeftChild);
-}
-
-int bstFindMinIterative (BSTNodePtr psNode) {
-	if (NULL == psNode) {
-		return -1;
-	}
-	while (NULL != psNode->psLeftChild) {
-		psNode = psNode->psLeftChild;
-	}
-	return psNode->key;
-}
-
-int bstCountLeaves (BSTNodePtr psNode) {
-	int numLeaves = 0;
-	if(NULL == psNode) {
-		return 0;
-	}
-	if (NULL == psNode->psLeftChild && NULL == psNode->psRightChild) {
-		return 1;
-	}
-	numLeaves += bstCountLeaves(psNode->psLeftChild);
-	numLeaves += bstCountLeaves (psNode->psRightChild);
-	return numLeaves;
-}
