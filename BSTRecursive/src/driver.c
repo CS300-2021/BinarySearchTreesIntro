@@ -76,6 +76,11 @@ int main () {
 	}
 	bstPrintInorder (psTree);
 
+	printf ("\n\nThe smallest key recursively is: %d\n", bstFindMin(psTree));
+	printf ("\n\nThe smallest key iteratively is: %d\n", bstFindMinIterative(psTree));
+
+	printf ("\n\nThe number of leaves is: %d\n", bstCountLeaves(psTree));
+
 	// testing remove
 	key = 30;
 	printf ("Removing node %d\n", key);
