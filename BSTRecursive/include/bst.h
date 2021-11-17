@@ -34,8 +34,4 @@ extern BSTNodePtr bstGetParentRecursive (BSTNodePtr psSubtree,
 extern BSTNodePtr bstRemove (BSTNodePtr psRoot, int key);
 extern BSTNodePtr bstRemoveNode (BSTNodePtr psRoot, BSTNodePtr psParent, BSTNodePtr psNode);
 
-extern int bstFindMin (BSTNodePtr psNode);
-extern int bstFindMinIterative (BSTNodePtr psNode);
-extern int bstCountLeaves (BSTNodePtr psNode);
-
 #endif /* INCLUDE_BST_H_ */
